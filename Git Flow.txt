@@ -1,0 +1,57 @@
+Git Flow
+
+####################################
+At start of every MBG Session:
+
+#Navigate to proper repo
+cd C:/Users/stearns7/Documents/git_repos/mbg
+
+#  This pulls the changes from the original repository (the one pointed to by the upstream Git remote) and pushes them to your forked repository (the one #  pointed to by the origin remote)
+
+
+
+git pull upstream develop
+git push origin master 
+
+1. Commit all changes to LF feature branch
+2. Push to origin LF
+3. Git checkout local develop
+4. git pull upstream develop
+5. Merge with LF 
+
+Pull upstream changes
+2. Git status
+3. Commit local changes
+4. Push to remote 
+
+
+#Resolving merge conflicts
+1. Open conflict file - call sublime
+   1a) C:/Program Files/Sublime Text 3/sublime_text.exe covariate_functions.R
+   /c/WINDOWS/system64/sublime_text.exe covariate_functions.R
+
+
+
+working mbg script
+
+commit 47946c4abf336e66065a6136815d5d88e1edb61a
+
+
+
+##when cloning, git will create new folder with name of repo
+
+
+#
+delete: /share/code/geospatial/stearns7/eco_niche/.git/.MERGE_MSG.swp
+
+##############################################################
+resoliving the 'please enter a commit message....'
+It's not a Git error message, it's the editor as git uses your default editor.
+
+To solve this:
+
+press "i"
+write your merge message
+press "esc"
+write ":wq"
+then press enter
