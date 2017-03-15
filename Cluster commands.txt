@@ -1,0 +1,145 @@
+
+------------------------------------------------- latest MBG process (2.24.17) -------------------------------------------------------
+
+screen -s 'something_memorable'
+qlogin -pe multi_slot 40 -now no -P proj_ geospatial
+cd /share/code/geospatial/stearns7/mbg
+git checkout lf
+git pull origin lf
+cd lf
+R
+source('lf_wrapper.R')
+source('lf_wrapper_sri_lanka.R')
+
+# save workspace
+save(list=ls(), "path/to/rundate/saved.RData")
+load("path/to/saved.RData")
+
+# if model run successful:
+q()
+save workspace: y
+cd ~
+cd /share/geospatial/mbg/lf/lf_pos/output
+ls
+cp -r folder_name /home/j/temp/stearns7/lf/mbg/lf_mbg_model_runs/
+# add model run details to 'sucessfulruntracking' sheet 
+# copy mean raster to local mean raster folder and visualize in arc
+
+------------------------------------------------ screen ------------------------------------------------------------------------------
+## prevents cessation of jobs if close computer
+screen
+
+# screening in & naming screenscrsc
+screen -s 'name of choosing'
+screen -rd 'name of choosing' to get back on
+
+# lists all screens you have open
+screen -r 
+
+# brings you to a screen 
+screen -r xxxxx(screen number)  
+
+# exits the screen but allows screen to keep running
+ctrl + A + D 
+
+# kill a screen without entering it
+$ screen -X -S [session # you want to kill] quit 
+
+
+------------------------------------------------ navigating the cluster --------------------------------------------------------------
+
+# qlogin plus request for 30 slots and does not have to return immediately, plus specifying I want slots reserved for the geospatial team
+qlogin -pe multi_slot 30 -now no -P proj_ geospatial 
+
+# navigate to folder
+cd /share/code/geospatial/stearns7 
+
+# log into specific node:
+ssh cnxxx
+
+# checking which node i am on:
+hostname
+
+# what do i have running?
+ps -ef | grep stearns7   
+
+# what jobs are running?
+qstat  
+
+# delete job xxxx
+qdel -j xxxx 
+
+# delete all jobs associated with my username
+qdel -u stearns7
+
+# kill job
+kill -9 pid 
+
+------------------------------------------------ jupyter notebooks -------------------------------------------------------------------
+
+# after qlogin
+ipython_notebook
+
+# jupyter notebook address:
+https://cn233.ihme.washington.edu:8888
+
+# password
+thefutureisnow
+
+------------------------------------------------ R stuff ----------------------------------------------------------------------------
+# most up to date R - 12/2016
+/usr/local/codem/public_use_anaconda/bin/R - most up-to-date version of R Nick
+
+# puts me in correct version of R
+/usr/local/R-current/bin/R  
+
+# what version am i working on? 
+sessionInfo()
+
+
+------------------------------------------------ navigating linux --------------------------------------------------------------------
+cd .. (up to parent folder)
+cd - (up to parent folder, and prints path to parent too)
+
+
+------------------------------------------------ folder & file manipulation in linux -------------------------------------------------
+# copy whole folder:
+cp -r folder_name destination
+
+# copy one file:
+cp file_name destination
+
+# remove whole folder: 
+rm -rf xxx
+
+
+----------------------------------------------- useful cluster 'geographies' -------------------------------------------------------
+
+# J: drive
+/homes/stearns
+/home/j/.....
+
+# temp folder
+home/j/temp/stearns7
+
+# checking SGE output for error messages
+/share/temp/sgeoutput/stearns7/errors
+
+
+# MBG model run output folder:
+cd /share/geospatial/mbg/lf/lf_pos/output
+
+# MBG model run raster storage 
+/home/j/temp/stearns7/lf/mbg/lf_mbg_model_runs/
+
+
+
+------------------------------------------------- Anoushka's code tips ---------------------------------------------------------------
+
+## qlogin -pe multi_slot 30 -l mem_free=60g -now no
+## cd /ihme/code/geospatial/amillear/mbg
+## git checkout develop_amillear
+## git pull origin develop_amillear
+## cd /ihme/code/geospatial/amillear/mbg/child_growth_failure
+## /usr/local/codem/anaconda/bin/R
+## source('run_mbg_lf_pos.R')
